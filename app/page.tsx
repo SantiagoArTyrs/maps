@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import type { MapContainerProps } from "react-leaflet";
+import { FaRoad, FaClock, FaFireFlameCurved } from "react-icons/fa6";
+import { FaFireAlt } from "react-icons/fa";
 
 export default function Page() {
   const [isClient, setIsClient] = useState(false);
@@ -39,7 +41,6 @@ export default function Page() {
   return (
     <main className="min-h-screen flex justify-center items-center bg-yellow-50">
       <div className="w-[360px] bg-white rounded-3xl shadow-lg overflow-hidden relative flex flex-col items-center pb-8">
-
         {/* Flecha atrás */}
         <div className="absolute top-4 left-4 bg-white rounded-full shadow-md p-2 cursor-pointer z-20">
           <svg
@@ -50,7 +51,11 @@ export default function Page() {
             stroke="black"
             className="w-4 h-4"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </div>
 
@@ -113,19 +118,35 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Today Stats */}
-        <div className="bg-white px-6 py-5 mt-6 grid grid-cols-3 text-center text-gray-700 w-full">
-          <div>
-            <p className="text-lg font-semibold">2.03</p>
-            <p className="text-xs">Kilometer</p>
-          </div>
-          <div>
-            <p className="text-lg font-semibold">15</p>
-            <p className="text-xs">Minutes</p>
-          </div>
-          <div>
-            <p className="text-lg font-semibold">75</p>
-            <p className="text-xs">Calories</p>
+        {/* Contenedor derecho */}
+        <div className="flex flex-col justify-between">
+          {/* Sección de estadísticas */}
+          <div className="bg-white rounded-2xl p-4 mt-4 grid grid-cols-3 gap-4 shadow-md">
+            {/* Título */}
+            <p className="col-span-3 text-lg font-semibold text-gray-800 mb-1">
+              Today
+            </p>
+
+            {/* Kilometers */}
+            <div className="bg-white rounded-xl flex flex-col items-center justify-center py-3 px-3 shadow-sm border border-gray-100">
+              <FaRoad className="text-2xl mb-1 text-blue-500" />
+              <p className="text-base font-semibold text-gray-800">2.03</p>
+              <p className="text-sm text-gray-500">Kilometer</p>
+            </div>
+
+            {/* Minutes */}
+            <div className="bg-white rounded-xl flex flex-col items-center justify-center py-3 px-3 shadow-sm border border-gray-100">
+              <FaClock className="text-2xl mb-1 text-yellow-500" />
+              <p className="text-base font-semibold text-gray-800">15</p>
+              <p className="text-sm text-gray-500">Minutes</p>
+            </div>
+
+            {/* Calories */}
+            <div className="bg-white rounded-xl flex flex-col items-center justify-center py-3 px-3 shadow-sm border border-gray-100">
+              <FaFireFlameCurved className="text-2xl mb-1 text-orange-500" />
+              <p className="text-base font-semibold text-gray-800">75</p>
+              <p className="text-sm text-gray-500">Calories</p>
+            </div>
           </div>
         </div>
       </div>
