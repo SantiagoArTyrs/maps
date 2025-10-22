@@ -40,9 +40,9 @@ export default function Page() {
 
   return (
     <main className="min-h-screen flex justify-center items-center bg-yellow-50">
-      <div className="w-[360px] bg-white rounded-3xl shadow-lg overflow-hidden relative flex flex-col items-center pb-8">
+      <div className="w-[320px] h-[720px] bg-white rounded-3xl shadow-lg overflow-hidden relative flex flex-col items-center pb-4">
         {/* Flecha atrás */}
-        <div className="absolute top-4 left-4 bg-white rounded-full shadow-md p-2 cursor-pointer z-20">
+        <div className="absolute top-9 left-9 bg-white rounded-full shadow-md p-2 cursor-pointer z-20">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -60,12 +60,13 @@ export default function Page() {
         </div>
 
         {/* MAPA */}
-        <div className="relative h-[300px] w-full z-0">
+        <div className="relative h-[380px] w-[90%] mt-4 rounded-2xl overflow-hidden shadow-md z-0">
           {isClient && (
             <MapContainer
               center={[10.995, -74.805]}
               zoom={15}
-              scrollWheelZoom={false}
+              scrollWheelZoom={true}
+              zoomControl={false}
               className="h-full w-full"
             >
               <TileLayer
@@ -81,72 +82,73 @@ export default function Page() {
               </Marker>
             </MapContainer>
           )}
-          {/* Distancia */}
-          <div className="absolute bottom-4 left-4 bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow-md">
+          <div className="absolute bottom-4 left-4 bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow-md z-[9999]">
             2.03 Km
           </div>
         </div>
 
         {/* Running Section (flotante separada) */}
-        <div className="w-[90%] bg-black text-white rounded-2xl mt-6 px-6 py-5 shadow-md">
-          <div className="flex items-center space-x-3">
-            <div className="bg-white p-2 rounded-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="black"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M16.5 3.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM6 9l6-1.5L17 9m-4 0l3 7m-6.5-6L8 17m9 0h2m-8 0H7"
-                />
-              </svg>
+        <div className="w-[90%] bg-black text-white rounded-4xl mt-6 px-6 py-5 shadow-md">
+          <div className="flex items-center">
+            {/* Icono */}
+            <div className="px-2 flex justify-center w-[30%]">
+              <div className="bg-white p-3 rounded-full">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="black"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M16.5 3.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM6 9l6-1.5L17 9m-4 0l3 7m-6.5-6L8 17m9 0h2m-8 0H7"
+                  />
+                </svg>
+              </div>
             </div>
-            <div>
-              <p className="text-sm font-medium">Running</p>
-              <p className="text-xs text-gray-400">3000 meters per day</p>
-            </div>
-          </div>
 
-          {/* Barra de progreso */}
-          <div className="mt-4 w-full bg-gray-700 h-2 rounded-full">
-            <div className="bg-yellow-400 h-2 rounded-full w-2/3"></div>
+            {/* Texto */}
+            <div className="w-[65%]">
+              <p className="text-sm font-medium">Running</p>
+              <p className="text-xs text-gray-400 mb-2">3000 meters per day</p>
+
+              {/* Barra de progreso */}
+              <div className="bg-gray-700 h-2 rounded-full w-full">
+                <div className="bg-yellow-400 h-2 rounded-full w-2/3"></div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Contenedor derecho */}
-        <div className="flex flex-col justify-between">
-          {/* Sección de estadísticas */}
-          <div className="bg-white rounded-2xl p-4 mt-4 grid grid-cols-3 gap-4 shadow-md">
-            {/* Título */}
-            <p className="col-span-3 text-lg font-semibold text-gray-800 mb-1">
-              Today
-            </p>
+        {/* Sección de estadísticas */}
+        <div className="bg-white rounded-4xl p-4 mt-4 grid grid-cols-3 gap-4 shadow-md scale-90">
+          {/* Título */}
+          <p className="col-span-3 text-lg font-semibold text-gray-800 mb-1">
+            Today
+          </p>
 
-            {/* Kilometers */}
-            <div className="bg-white rounded-xl flex flex-col items-center justify-center py-3 px-3 shadow-sm border border-gray-100">
-              <FaRoad className="text-2xl mb-1 text-blue-500" />
-              <p className="text-base font-semibold text-gray-800">2.03</p>
-              <p className="text-sm text-gray-500">Kilometer</p>
-            </div>
+          {/* Kilometers */}
+          <div className="bg-white rounded-xl flex flex-col items-center justify-center py-3 px-3 shadow-sm border border-gray-100">
+            <FaRoad className="text-2xl mb-1 text-blue-500" />
+            <p className="text-base font-semibold text-gray-800">2.03</p>
+            <p className="text-sm text-gray-500">Kilometer</p>
+          </div>
 
-            {/* Minutes */}
-            <div className="bg-white rounded-xl flex flex-col items-center justify-center py-3 px-3 shadow-sm border border-gray-100">
-              <FaClock className="text-2xl mb-1 text-yellow-500" />
-              <p className="text-base font-semibold text-gray-800">15</p>
-              <p className="text-sm text-gray-500">Minutes</p>
-            </div>
+          {/* Minutes */}
+          <div className="bg-white rounded-xl flex flex-col items-center justify-center py-3 px-3 shadow-sm border border-gray-100">
+            <FaClock className="text-2xl mb-1 text-yellow-500" />
+            <p className="text-base font-semibold text-gray-800">15</p>
+            <p className="text-sm text-gray-500">Minutes</p>
+          </div>
 
-            {/* Calories */}
-            <div className="bg-white rounded-xl flex flex-col items-center justify-center py-3 px-3 shadow-sm border border-gray-100">
-              <FaFireFlameCurved className="text-2xl mb-1 text-orange-500" />
-              <p className="text-base font-semibold text-gray-800">75</p>
-              <p className="text-sm text-gray-500">Calories</p>
-            </div>
+          {/* Calories */}
+          <div className="bg-white rounded-xl flex flex-col items-center justify-center py-3 px-3 shadow-sm border border-gray-100">
+            <FaFireFlameCurved className="text-2xl mb-1 text-orange-500" />
+            <p className="text-base font-semibold text-gray-800">75</p>
+            <p className="text-sm text-gray-500">Calories</p>
           </div>
         </div>
       </div>
